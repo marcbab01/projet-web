@@ -1,0 +1,12 @@
+.navigation__contenu {
+    display: flex;
+    list-style-type: none;
+}
+
+.navigation__li a {
+    text-decoration: none;
+}
+
+.navigation__li:hover ul {
+    display: block;
+}

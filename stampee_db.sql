@@ -17,11 +17,6 @@ CREATE TABLE couleur (
     code VARCHAR(10)
 );
 
-CREATE TABLE image (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    image BLOB(1000)
-);
-
 CREATE TABLE pays (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL
@@ -32,37 +27,27 @@ CREATE TABLE conditions (
     nom VARCHAR(25)
 );
 
-CREATE TABLE commentaire (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    commentaire TEXT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
-
-CREATE TABLE mise (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    montant DOUBLE NOT NULL,
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
-
 CREATE TABLE timbre (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date DATE,
     couleur_id INT NOT NULL,
     pays_id INT NOT NULL,
-    image_id INT NOT NULL,
     condition_id INT NOT NULL,
     tirage INT NOT NULL,
     longueur INT NOT NULL,
     largeur INT NOT NULL,
     certificat BOOLEAN,
-    commentaire_id INT,
     FOREIGN KEY (couleur_id) REFERENCES couleur(id),
     FOREIGN KEY (pays_id) REFERENCES pays(id),
-    FOREIGN KEY (image_id) REFERENCES image(id),
-    FOREIGN KEY (condition_id) REFERENCES conditions(id),
-    FOREIGN KEY (commentaire_id) REFERENCES commentaire(id)
+    FOREIGN KEY (condition_id) REFERENCES conditions(id)
+);
+
+CREATE TABLE image (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    image VARCHAR(100),
+    principalite BOOLEAN,
+    timbre_id INT,
+    FOREIGN KEY (timbre_id) REFERENCES timbre(id)
 );
 
 CREATE TABLE enchere (
@@ -72,7 +57,24 @@ CREATE TABLE enchere (
     prix_plancher DOUBLE NOT NULL,
     favoris BOOLEAN NOT NULL,
     timbre_id INT NOT NULL,
-    mise_id INT,
-    FOREIGN KEY (timbre_id) REFERENCES timbre(id),
-    FOREIGN KEY (mise_id) REFERENCES mise(id)
+    FOREIGN KEY (timbre_id) REFERENCES timbre(id)
+);
+
+CREATE TABLE commentaire (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    commentaire TEXT NOT NULL,
+    user_id INT NOT NULL,
+    enchere_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (enchere_id) REFERENCES enchere(id)
+);
+
+CREATE TABLE mise (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    montant DOUBLE NOT NULL,
+    timestamp DATETIME,
+    user_id INT NOT NULL,
+    enchere_id INT NOT NULL UNIQUE,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (enchere_id) REFERENCES enchere(id)
 );
