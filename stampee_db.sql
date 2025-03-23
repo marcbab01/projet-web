@@ -1,6 +1,11 @@
 CREATE DATABASE stampee_db;
 USE stampee_db;
 
+CREATE TABLE privilege (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    privilege VARCHAR(50) NOT NULL
+)
+
 CREATE TABLE user (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
@@ -8,7 +13,9 @@ CREATE TABLE user (
     password VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     phone VARCHAR(20) NOT NULL,
-    zipCode VARCHAR(10) NOT NULL
+    zipCode VARCHAR(10) NOT NULL,
+    privilege_id INT NOT NULL,
+    FOREIGN KEY (privilege_id) REFERENCES privilege(id)
 );
 
 CREATE TABLE couleur (
