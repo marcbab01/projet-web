@@ -28,7 +28,9 @@ class UserController {
     }
 
     public function create() {
-        View:render('user/create');
+        $privilege = new Privilege;
+        $privileges = $privilege->select('privilege');
+        return View::render('user/create', ['privileges'=>$privileges]);
     }
 
     public function store($data = []) {
@@ -42,9 +44,10 @@ class UserController {
 
         if($validator->isSuccess()) {
             $user = new User;
-            $insert = $client->insert($date);
+            $data['password'] = $user->hashPassword($data['password']);
+            $insert = $user->insert($date);
             if($insert) {
-                return View::redirect('user/show?id='.$insert);
+                return View::redirect('login');
             }
             else {
                 return View::render('error');
@@ -52,8 +55,9 @@ class UserController {
         }
         else {
             $errors = $validator->getErrors();
-            $inputs = $data;
-            return View::render('user/create', ['errors'=>$errors, 'inputs'=>$inputs]);
+            $privilege = new Privilege;
+            $privileges = $privilege->select('privilege');
+            return View::render('user/create', ['errors'=>$errors, 'user'=>$data, 'privileges'=>$privileges]);
         }
     }
 }

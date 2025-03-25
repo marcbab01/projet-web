@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use App\Models;
 
 class Validator {
 
@@ -98,5 +99,15 @@ class Validator {
 
     public function getErrors(){
         if(!$this->isSuccess()) return $this->errors;
+    }
+
+    public function unique($model) {
+        $model = 'App\\Models\\'.$model;
+        $model = new $model;
+        $unique = $model->unique($this->key, $this->value);
+        if ($unique) {
+            $this->errors[$this->key]="$this->name must be unique.";
+        }
+        return $this; 
     }
 }
