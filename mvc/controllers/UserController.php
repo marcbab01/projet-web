@@ -32,13 +32,28 @@ class UserController {
     }
 
     public function store($data = []) {
-        $user = new User;
-        $insert = $user->insert($data);
-        if($insert) {
-            return View::redirect('user/show?id='.$insert);
+        $validator = new Validator;
+        $validator->field('nom', $data['nom'])->min(2)->max(255);
+        $validator->field('username', $data['username'])->min(6)->max(50);
+        $validator->field('password', $data['password']);
+        $validator->field('email', $data['email'])->email()->max(255);
+        $validator->field('phone', $data['phone'])->max(20);
+        $validator->field('zipCode', $data['zipCode'], 'Zip Code')->max(10);
+
+        if($validator->isSuccess()) {
+            $user = new User;
+            $insert = $client->insert($date);
+            if($insert) {
+                return View::redirect('user/show?id='.$insert);
+            }
+            else {
+                return View::render('error');
+            }
         }
         else {
-            return View::render('error');
+            $errors = $validator->getErrors();
+            $inputs = $data;
+            return View::render('user/create', ['errors'=>$errors, 'inputs'=>$inputs]);
         }
     }
 }
