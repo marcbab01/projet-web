@@ -26,4 +26,19 @@ class UserController {
         }
         return View::render('error');
     }
+
+    public function create() {
+        View:render('user/create');
+    }
+
+    public function store($data = []) {
+        $user = new User;
+        $insert = $user->insert($data);
+        if($insert) {
+            return View::redirect('user/show?id='.$insert);
+        }
+        else {
+            return View::render('error');
+        }
+    }
 }
