@@ -12,4 +12,18 @@ class UserController {
         }
         return View::render('error');
     }
+
+    public function show($data = []) {
+        if(asset($data['id']) && $data['id']!=null) {
+            $user = new User;
+            $selectId = $user->selectId($data['id']);
+            if($selectId) {
+                return View::render('user/show', ['user'=>$selectId]);
+            }
+            else {
+                return View::render('error');
+            }
+        }
+        return View::render('error');
+    }
 }
