@@ -5,7 +5,8 @@ use App\Controllers\User;
 
 class UserController {
     public function index() {
-        $model = new User();
-        $data = $model->getData();
+        $user = new User;
+        $select = $user->select('name');
+        include('views/user/index.php');
     }
 }
