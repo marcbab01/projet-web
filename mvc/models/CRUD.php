@@ -18,4 +18,18 @@ class CRUD extends \PDO {
             return false;
         }
     }
+
+    public function selectId($value) {
+        $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":$this->primaryKey", $value);
+        $stmt->execute();
+        $count = $stmt->rowCount();
+        if($count == 1){
+            return $stmt->fetch();
+        }
+        else {
+            return false;
+        }
+    }
 }
