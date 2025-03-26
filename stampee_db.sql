@@ -85,3 +85,7 @@ CREATE TABLE mise (
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (enchere_id) REFERENCES enchere(id)
 );
+
+INSERT INTO privilege (privilege) VALUES ('Admin');
+INSERT INTO privilege (privilege) VALUES ('Manager');
+INSERT INTO privilege (privilege) VALUES('Employee');

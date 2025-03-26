@@ -1,3 +1,3 @@
 <?php
-define('BASE', '/mvc');
-define('ASSET', '/mvc/public/');
+define('BASE', 'projet-web/mvc');
+define('ASSET', 'projet-web/mvc/public/');

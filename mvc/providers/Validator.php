@@ -106,7 +106,7 @@ class Validator {
         $model = new $model;
         $unique = $model->unique($this->key, $this->value);
         if ($unique) {
-            $this->errors[$this->key]="$this->name must be unique.";
+            $this->errors[$this->key]="$this->name existe déjà.";
         }
         return $this; 
     }
