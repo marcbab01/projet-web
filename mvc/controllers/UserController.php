@@ -33,8 +33,8 @@ class UserController {
 
     public function create() {
         $privilege = new Privilege;
-        $privileges = $privilege->select('privilege');
-        return View::render('user/create', ['privileges'=>$privileges]);
+        $select = $privilege->select();
+        return View::render('user/create', ['privileges'=>$select]);
     }
 
     public function store($data = []) {

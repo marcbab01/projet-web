@@ -1,16 +1,22 @@
-{{include('layouts/header.php', {title: 'Registration'})}}
+{{ include('layouts/header.php', {title: 'User Create'})}}
     <main class="connection">
         <div class="connection__conteneur">
             <h2>Create an Account</h2>
             <form class="connection__form">
+
                 <label for="name">
                     Nom Complet
                 </label>
                 <input type="text" id="name" name="name" value="{{user.nom}}">
+                {% if errors.name is defined %}
+                    <span class="error">{{errors.name}}</span>
+                {% endif %}
+
                 <label for="username">
                     Nom d'utilisateur
                 </label>
                 <input type="text" id="username" name="username" value="{{user.username}}">
+
                 <label for="password">
                     Mot de passe
                 </label>
