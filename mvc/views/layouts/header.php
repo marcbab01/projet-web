@@ -35,11 +35,15 @@
         </ul>
     </nav>
     <header class="entete">
-        <a href="index.html" class="logo"><h1>Stampee Auction</h1></a>
-        <form class="searchBar">
-            <input type="search">
-            <input type="submit">
-        </form>
+        <div class="entete__contenu">
+            <div><a href="index.html" class="logo"><h1>Stampee Auction</h1></a></div>
+            <div>
+                <form class="searchBar">
+                    <input type="search">
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
     </header>
     <nav class="navigation _principale">
         <ul class="navigation__contenu">
