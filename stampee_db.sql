@@ -4,7 +4,7 @@ USE stampee_db;
 CREATE TABLE privilege (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     privilege VARCHAR(50) NOT NULL
-)
+);
 
 CREATE TABLE user (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

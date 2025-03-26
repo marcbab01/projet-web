@@ -1,0 +1,22 @@
+.pieds {
+    background-color: #244a73;
+    padding: 50px;
+}
+
+.pieds__contenu {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.pieds__colonne>h4 {
+    padding-bottom: 12px;
+}
+
+.pieds__ul {
+    list-style-type: none;
+}
+
+.pieds__li>a {
+    text-decoration: none;
+}
