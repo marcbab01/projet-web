@@ -9,14 +9,21 @@
             </ul>
           </div>
          {% endif %}
-        <form method="post">
-            <h2>Login</h2>
-            <label>Username
-                <input type="text" name="username" value="{{ user.username }}">
-            </label>
-            <label>Password
-                <input type="password" name="password">
-            </label>
-            <input type="submit" class="btn" value="login">
-        </form>
         </div>
+    <main class="connection">
+        <div class="connection__conteneur">
+            <h2>Sign-In</h2>
+            <form class="connection__form" method="post">
+                <label for="username">
+                    Nom d'utilisateur
+                </label>
+                <input type="text" id="username" name="username" value="{{user.username}}">
+                <label for="password">
+                    Mot de passe
+                </label>
+                <input type="password" id="password" name="password">
+                <input type="submit">
+            </form>
+        </div>
+    </main>
+    {{ include('layouts/footer.php')}}

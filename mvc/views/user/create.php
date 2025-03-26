@@ -45,5 +45,4 @@
             </form>
         </div>
     </main>
-</body>
-</html>
+    {{ include('layouts/footer.php')}}
