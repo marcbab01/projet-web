@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?= ASSET; ?>css/style.css">
 </head>
 <body>
     <nav class="navigation _secondaire">
@@ -32,17 +32,25 @@
                     <li class="menu-deroulant__li"><a href="">Termes et conditions</a></li>
                 </ul>
             </li>
+            <li class="navigation__li">
+                <a href="#">English</a>
+                <ul class="menu-deroulant">
+                    <li class="menu-deroulant__li"><a href="">French</a></li>
+                    <li class="menu-deroulant__li"><a href="">Spanish</a></li>
+                    <li class="menu-deroulant__li"><a href="">German</a></li>
+                    <li class="menu-deroulant__li"><a href="">Russian</a></li>
+                    <li class="menu-deroulant__li"><a href="">Italian</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <header class="entete">
         <div class="entete__contenu">
-            <div><a href="index.html" class="logo"><h1>Stampee Auction</h1></a></div>
-            <div>
-                <form class="searchBar">
-                    <input type="search">
-                    <input type="submit">
-                </form>
-            </div>
+            <a href="index.html" class="logo"><h1>Stampee Auction</h1></a>
+            <form class="searchBar">
+                <input type="search">
+                <input type="submit">
+            </form>
         </div>
     </header>
     <nav class="navigation _principale">
@@ -72,3 +80,4 @@
             </li>
         </ul>
     </nav>
+    <hr>
