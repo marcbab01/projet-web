@@ -20,6 +20,7 @@ class Route {
         $method = $_SERVER['REQUEST_METHOD'];
 
         foreach (self::$routes as $route) {
+
             if (BASE.$route['url'] == $urlPath && $route['method'] == $method) {
                 $controllerSegments = explode('@', $route['controller']);
                 $controllerName = 'App\\Controllers\\'.$controllerSegments[0];
@@ -43,6 +44,7 @@ class Route {
                     }
                 }
                 return;
+
             }
         }
         http_response_code(404);

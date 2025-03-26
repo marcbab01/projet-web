@@ -8,40 +8,23 @@ use App\Providers\Validator;
 use App\Providers\Auth;
 
 class UserController {
-    public function index() {
-        $user = new User;
-        $select = $user->select('name');
-        if($select){
-            return View::render('user/index', ['user'=> $select]);
-        }
-        return View::render('error');
-    }
 
-    public function show($data = []) {
-        if(asset($data['id']) && $data['id']!=null) {
-            $user = new User;
-            $selectId = $user->selectId($data['id']);
-            if($selectId) {
-                return View::render('user/show', ['user'=>$selectId]);
-            }
-            else {
-                return View::render('error');
-            }
-        }
-        return View::render('error');
-    }
+    // public function __construct(){
+    //     Auth::session();
+    //     // Auth::privilege(1);
+    // }
 
-    public function create() {
+    public function create(){
         $privilege = new Privilege;
         $select = $privilege->select();
-        return View::render('user/create', ['privileges'=>$select]);
+        return View::render('user/create', ['privileges' => $select]);
     }
 
     public function store($data = []) {
         $validator = new Validator;
         $validator->field('nom', $data['nom'])->min(2)->max(255);
         $validator->field('username', $data['username'])->min(6)->max(50);
-        $validator->field('password', $data['password']);
+        $validator->field('password', $data['password'])->min(6)->max(20);
         $validator->field('email', $data['email'])->email()->max(255);
         $validator->field('phone', $data['phone'])->max(20);
         $validator->field('zipCode', $data['zipCode'], 'Zip Code')->max(10);
@@ -49,7 +32,7 @@ class UserController {
         if($validator->isSuccess()) {
             $user = new User;
             $data['password'] = $user->hashPassword($data['password']);
-            $insert = $user->insert($date);
+            $insert = $user->insert($data);
             if($insert) {
                 return View::redirect('login');
             }
@@ -60,8 +43,8 @@ class UserController {
         else {
             $errors = $validator->getErrors();
             $privilege = new Privilege;
-            $privileges = $privilege->select('privilege');
-            return View::render('user/create', ['errors'=>$errors, 'user'=>$data, 'privileges'=>$privileges]);
+            $select = $privilege->select();
+            return View::render('user/create', ['errors'=>$errors, 'user'=>$data, 'privileges'=>$select]);
         }
     }
 }

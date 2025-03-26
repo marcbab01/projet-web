@@ -8,9 +8,17 @@
 </head>
 <body>
     <nav class="navigation _secondaire">
+
+    {% if guest %}
         <div class="connect__btn">
-            <p><a href="#">Sign Up</a> or <a href="#">Create An Account</a></p>
+            <p><a href="{{base}}/login">Sign Up</a> or <a href="{{base}}/user/create">Create An Account</a></p>
         </div>
+    {% else %}
+        <div class="connect__btn">
+            <p><a href="#">Logout</a></p>
+        </div>
+    {% endif %}
+
         <ul class="navigation__contenu">
             <li class="navigation__li">
                 <a href="#">Aide</a>

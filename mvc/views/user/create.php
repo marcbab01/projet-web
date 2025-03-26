@@ -2,15 +2,12 @@
     <main class="connection">
         <div class="connection__conteneur">
             <h2>Create an Account</h2>
-            <form class="connection__form">
+            <form class="connection__form" method="post">
 
-                <label for="name">
+                <label for="nom">
                     Nom Complet
                 </label>
-                <input type="text" id="name" name="name" value="{{user.nom}}">
-                {% if errors.name is defined %}
-                    <span class="error">{{errors.name}}</span>
-                {% endif %}
+                <input type="text" id="nom" name="nom" value="{{user.nom}}">
 
                 <label for="username">
                     Nom d'utilisateur
@@ -20,7 +17,7 @@
                 <label for="password">
                     Mot de passe
                 </label>
-                <input type="text" id="password" name="password" value="{{user.password}}">
+                <input type="password" id="password" name="password" value="{{user.password}}">
                 <label for="email">
                     Adresse courriel
                 </label>
@@ -29,11 +26,11 @@
                     No de telephone
                 </label>
                 <input type="text" id="phone" name="phone" value="{{user.phone}}">
-                <label for="postal">
+                <label for="zipCode">
                     Code Postal
                 </label>
-                <input type="text" id="postal" name="postal" value="{{user.zipCode}}">
-                <label for="privilege">
+                <input type="text" id="zipCode" name="zipCode" value="{{user.zipCode}}">
+                <label for="privilege_id">
                     Privilege
                 </label>
                 <select name="privilege_id">
