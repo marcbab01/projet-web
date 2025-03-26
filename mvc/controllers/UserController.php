@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Controllers;
-use App\Controllers\User;
+use App\Models\User;
+use App\Models\Privilege;
+use App\Providers\View;
+use App\Providers\Validator;
+use App\Providers\Auth;
 
 class UserController {
     public function index() {
