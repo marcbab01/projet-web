@@ -1,0 +1,22 @@
+.searchBar {
+    display: flex;
+}
+
+.searchBar__input {
+    width: 30vw;
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.searchBar__btn {
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: white;
+    padding: 5px;
+}
+
+.searchBar__btn>img {
+    width: 25px;
+}

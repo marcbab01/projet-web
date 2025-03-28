@@ -1,0 +1,24 @@
+a,
+h2,
+h3,
+h4,
+p,
+select,
+option,
+label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #244a73;
+}
+
+h1 {
+    color: #C9A66B;
+}
+
+h4 {
+    color: #C9A66B;
+}
+
+.pieds__li>a {
+    color: #F5F2E9;
+    font-size: 16px;
+}

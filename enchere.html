@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
+    <title>Page Produit</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -52,13 +52,12 @@
                 <h1>Stampee Auction</h1>
             </a>
             <form class="searchBar">
-                <input type="search" class="searchBar__input">
-                <button type="submit" class="searchBar__btn"><img src="assets/img/search-icon.png"
-                        alt="icone de recherche"></button>
+                <input type="search">
+                <input type="submit">
             </form>
         </div>
     </header>
-    <nav class=" navigation _principale">
+    <nav class="navigation _principale">
         <ul class="navigation__contenu">
             <li class="navigation__li">
                 <a href="#">A propos de Lord Reginald Stampee III</a>
@@ -86,37 +85,67 @@
         </ul>
     </nav>
     <hr>
-    <main class="connection">
-        <div class="connection__conteneur">
-            <h2>Create an Account</h2>
-            <form class="connection__form">
-                <label for="name">
-                    Nom Complet
-                </label>
-                <input type="text" id="name" name="name">
-                <label for="username">
-                    Nom d'utilisateur
-                </label>
-                <input type="text" id="username" name="username">
-                <label for="password">
-                    Mot de passe
-                </label>
-                <input type="text" id="password" name="password">
-                <label for="email">
-                    Adresse courriel
-                </label>
-                <input type="email" id="email" name="email">
-                <label for="phone">
-                    No de telephone
-                </label>
-                <input type="text" id="phone" name="phone">
-                <label for="postal">
-                    Code Postal
-                </label>
-                <input type="text" id="postal" name="postal">
-                <input type="submit">
-            </form>
-        </div>
+    <main class="contenu-principal">
+        <section class="enchere">
+            <div class="enchere__medaillon">
+                <div class="enchere__entete">
+                    <h2>No de l'encan - Nom de l'Encan - DD/MM @ DD/MM</h2>
+                    <h4>Type d'encan (ex: Online Only)</h4>
+                </div>
+                <div class="enchere__contenu-general">
+                    <div class="enchere__gallerie">
+                        <picture class="enchere__image-principale">
+                            <img src="assets/img/Timbre_Produit.jpg" alt="">
+                        </picture>
+                        <div class="enchere__carousel">
+                            <picture class="carousel__image"><img src="assets/img/Timbre_Produit.jpg" alt=""></picture>
+                            <picture class="carousel__image"><img src="assets/img/Timbre__Certificat.jpg" alt="">
+                            </picture>
+                            <picture class="carousel__image"><img src="assets/img/Timbre_used.jpg" alt=""></picture>
+                        </div>
+                    </div>
+                    <div class="enchere__produit">
+                        <div class="timbre__infos _general">
+                            <span>
+                                <h3 class="timbre__titre">Nom du timbre</h3>
+                                <p><i>Near Mint</i></p>
+                                <p>Annee de parution : 1805</p>
+                                <p><strong>Pays d'Origine: USA</strong></p>
+                                <p>Valeur : <strong>1000$</strong></p>
+                            </span>
+                        </div>
+                        <div class="timbre__infos _general">
+                            <span>
+                                <h3 class="timbre__titre">Caractéristiques du timbre</h3>
+                                <p><strong>Mode d'impression:</strong> Gravure</p>
+                                <p><strong>Couleur de l'encre:</strong> Noir</p>
+                                <p><strong>Qualité de la gomme:</strong> Originale</p>
+                                <p><strong>Type de marges:</strong> Centré</p>
+                                <p><strong>Dentelure:</strong> Intacte</p>
+                            </span>
+                        </div>
+                        <div class="timbre__infos _historique">
+                            <span>
+                                <h3 class="timbre__titre">Histoire de ce timbre</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi iusto dolores
+                                    dignissimos suscipit qui recusandae repudiandae nulla laboriosam labore deserunt,
+                                    quisquam consequatur hic odio, sequi praesentium atque impedit nemo quo vitae sunt
+                                    molestiae ipsam dolor totam. Aut ut quibusdam quas amet ex rerum atque quod quis
+                                    facere aspernatur modi, at recusandae dolorem iure unde ad voluptatem laudantium
+                                    nisi officiis a.</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="enchere__action">
+                        <span>
+                            <h4>Temps restant de l'encan</h4>
+                            <p><strong>00:00:00</strong></p>
+                        </span>
+                        <button class="enchere__btn">Placez une Mise</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <footer class="pieds">
         <div class="pieds__contenu">

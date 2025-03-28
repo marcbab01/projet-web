@@ -1,0 +1,64 @@
+.enchere {
+    padding: 5vh 15vw;
+}
+
+.enchere__entete {
+    padding: 10px;
+    background-color: #4f6e8f;
+    border-radius: 10px 10px 0 0;
+}
+
+.enchere__entete>* {
+    color: #f5f2e9;
+}
+
+.enchere__contenu-general {
+    display: flex;
+    flex-direction: row;
+}
+
+.enchere__contenu-general,
+.enchere__contenu-general>* {
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.enchere__gallerie {
+    flex: 1;
+}
+
+.enchere__carousel {
+    display: flex;
+    gap: 50px;
+    margin: 20px;
+}
+
+.enchere__produit {
+    flex: 3;
+    padding: 15px;
+}
+
+.enchere__action {
+    flex: 1;
+    padding-top: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.enchere__action>span>h4 {
+    font-size: 20px;
+}
+
+.enchere__action>span>p {
+    padding: 20px;
+    font-size: 30px;
+}
+
+.enchere__btn {
+    padding: 20px;
+    font-size: 20px;
+    color: #f5f2e9;
+    background-color: #4f6e8f;
+
+}

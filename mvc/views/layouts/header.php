@@ -15,7 +15,7 @@
         </div>
     {% else %}
         <div class="connect__btn">
-            <p><a href="#">Logout</a></p>
+            <p><a href="{{base}}/logout">Logout</a></p>
         </div>
     {% endif %}
 
@@ -56,8 +56,9 @@
         <div class="entete__contenu">
             <a href="index.html" class="logo"><h1>Stampee Auction</h1></a>
             <form class="searchBar">
-                <input type="search">
-                <input type="submit">
+            <input type="search" class="searchBar__input">
+                <button type="submit" class="searchBar__btn"><img src="{{asset}}img/search-icon.png"
+                        alt="icone de recherche"></button>
             </form>
         </div>
     </header>

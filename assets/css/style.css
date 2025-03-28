@@ -1,8 +1,10 @@
 @import 'general.css';
 
 @import 'composants/menu-deroulant.css';
+@import 'composants/search.css';
 
 @import 'layouts/connection.css';
+@import 'layouts/enchere.css';
 @import 'layouts/entete.css';
 @import 'layouts/footer.css';
 @import 'layouts/navigation.css';

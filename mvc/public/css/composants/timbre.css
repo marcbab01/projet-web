@@ -1,0 +1,20 @@
+.timbre__infos {
+    padding: 8px 0 20px 0;
+}
+
+.timbre__titre {
+    font-size: 18px;
+}
+
+.timbre__infos>span>p {
+    font-size: 14px;
+    padding: 8px 0 0 0;
+}
+
+._general {
+    border-style: none none double none;
+}
+
+._historique>span>p {
+    padding: 15px;
+}
