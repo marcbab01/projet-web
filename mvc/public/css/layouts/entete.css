@@ -13,3 +13,21 @@
     margin-left: auto;
     margin-right: 5vw;
 }
+
+._contenu-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20vw 0 20vw;
+}
+
+.entete__titre {
+    margin-right: auto;
+}
+
+.entete__triage {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

@@ -1,9 +1,8 @@
 <?php
 
-use App\Controllers\HomeController;
-use App\Controllers\AuthController;
-use App\Controllers\UseController;
 use App\Routes\Route;
+
+Route::get('/home', 'HomeController@index');
 
 Route::get('/user/create', 'UserController@create');
 Route::post('/user/create', 'UserController@store');

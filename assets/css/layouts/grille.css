@@ -1,0 +1,11 @@
+.grille {
+    flex: 4;
+}
+
+.grille__contenu {
+    margin: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    grid-gap: 50px;
+
+}

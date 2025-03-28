@@ -1,7 +1,9 @@
 <?php
-class HomeController {
-    public function index() {
+class HomeController
+{
+    public function index()
+    {
         $data = "Hello from ExampleModel!";
-        include('views/home.php');
+        include 'views/home.php';
     }
 }

@@ -6,3 +6,7 @@
 h1 {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+main {
+    margin: 50px 5vw;
+}

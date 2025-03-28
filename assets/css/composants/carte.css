@@ -1,0 +1,38 @@
+.carte {
+    min-height: 550px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+.carte>h2 {
+    margin: 10px;
+}
+
+.carte>p {
+    margin: 10px;
+}
+
+.carte__img {
+    padding: 20px;
+    background-color: #EDE4E3;
+    border-radius: 5px 5px 0 0;
+    height: 45%;
+}
+
+.carte__btn {
+    background-color: #244a73;
+    text-decoration: none;
+    padding: 5px;
+    margin: 10px 20px;
+    border-radius: 5px;
+    color: #f5f2e9;
+
+}
+
+.carte__details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
