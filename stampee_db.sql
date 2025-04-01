@@ -36,6 +36,7 @@ CREATE TABLE conditions (
 
 CREATE TABLE timbre (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    titre VARCHAR(255) NOT NULL,
     date DATE,
     couleur_id INT NOT NULL,
     pays_id INT NOT NULL,
