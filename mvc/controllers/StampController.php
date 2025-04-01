@@ -2,6 +2,9 @@
 namespace App\Controllers;
 
 use App\Models\Stamp;
+use App\Models\Couleur;
+use App\Models\Pays;
+use App\Models\Condition;
 use App\Providers\View;
 
 class StampController
@@ -16,6 +19,17 @@ class StampController
         return View::render('error');
     }
 
+    public function create() {
+        $couleur = new Couleur;
+        $selectCouleur = $couleur->select();
+        $pays = new Pays;
+        $selectPays = $pays->select();
+        $condition = new Condition;
+        $selectCond = $condition->select();
+
+        View::render('stamp/create', ['couleur'=> $selectCouleur, 'pays'=> $selectPays, 'conditions'=> $selectCond]);
+    }
+
     public function show($data = []) {
         if(isset($data['id']) && $data['id']!=null){
             $stamp = new Stamp;
@@ -28,5 +42,16 @@ class StampController
             }
         }
         return View::render('error');
+    }
+
+    public function store($data = []) {
+        $client = new Client;
+        $insert = $client->insert($data);
+        if($insert) {
+            return View::redirect('stamp/show^id='.$insert);
+        }
+        else {
+            return View::render('error');
+        }
     }
 }

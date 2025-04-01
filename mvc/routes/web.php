@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\UserController;
 use App\Controllers\StampController;
 use App\Routes\Route;
 
@@ -15,5 +16,7 @@ Route::get('/logout', 'AuthController@delete');
 
 Route::get('/stamp', 'StampController@index');
 Route::get('/stamp/show', 'StampController@show');
+Route::get('/stamp/create', 'StampController@create');
+Route::get('/stamp/create', 'StampController@store');
 
 Route::dispatch();

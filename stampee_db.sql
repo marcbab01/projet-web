@@ -113,3 +113,9 @@ INSERT INTO pays (nom) VALUES ('Chine');
 INSERT INTO pays (nom) VALUES ('Russie');
 INSERT INTO pays (nom) VALUES ('Danemark');
 INSERT INTO pays (nom) VALUES ('Égypte');
+
+INSERT INTO conditions (nom) VALUES ('Parfaite');
+INSERT INTO conditions (nom) VALUES ('Excellente');
+INSERT INTO conditions (nom) VALUES ('Bonne');
+INSERT INTO conditions (nom) VALUES ('Moyenne');
+INSERT INTO conditions (nom) VALUES ('Endommage');
