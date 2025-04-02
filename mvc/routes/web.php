@@ -17,6 +17,9 @@ Route::get('/logout', 'AuthController@delete');
 Route::get('/stamp', 'StampController@index');
 Route::get('/stamp/show', 'StampController@show');
 Route::get('/stamp/create', 'StampController@create');
-Route::get('/stamp/create', 'StampController@store');
+Route::post('/stamp/create', 'StampController@store');
+
+Route::get('/image/create', 'ImageController@create');
+Route::post('/image/create', 'ImageController@store');
 
 Route::dispatch();
