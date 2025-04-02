@@ -52,7 +52,7 @@ CREATE TABLE timbre (
 
 CREATE TABLE image (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    image VARCHAR(100),
+    image VARCHAR(255),
     principalite BOOLEAN,
     timbre_id INT,
     FOREIGN KEY (timbre_id) REFERENCES timbre(id)

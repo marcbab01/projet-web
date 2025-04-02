@@ -32,3 +32,8 @@
     width: 300px;
     height: 24px;
 }
+
+.connection__form>select>option {
+    width: 300px;
+    height: 24px;
+}
