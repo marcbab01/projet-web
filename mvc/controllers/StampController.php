@@ -45,8 +45,8 @@ class StampController
     }
 
     public function store($data = []) {
-        $client = new Client;
-        $insert = $client->insert($data);
+        $stamp = new Stamp;
+        $insert = $stamp->insert($data);
         if($insert) {
             return View::redirect('stamp/show^id='.$insert);
         }
