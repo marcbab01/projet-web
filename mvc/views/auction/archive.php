@@ -1,6 +1,6 @@
 {{ include('layouts/header.php', {title: 'User Create'})}}
 <main>
-        <header class="entete _contenu-principal">
+        <header class="_contenu-principal">
             <h1 class="entete__titre">Gallerie des encans</h1>
             <form class="entete__triage">
                 <label for="tri">Triez par :
@@ -74,38 +74,26 @@
             </aside>
             <div class="grille">
                 <div class="grille__contenu">
-
-                        {% for timbre in timbre %}
-                        
                     <div class="carte">
                         <div class="carte__img"><img src="assets/img/timbre-template1.jpg" alt=""></div>
-                        <h2>{{ timbre.titre }}</h2>
-                        <p><i>Mint/Near-Mint</i></p>
-                        <p>Grande-Bretagne</p>
-                        <p>1856</p>
+                        <h2>{{timbre.titre}}</h2>
+                        <p><i>{{timbre.condition_id}}</i></p>
+                        <p>{{timbre.pays_id}}</p>
+                        <p>{{timbre.date}}</p>
                         <div class="carte__details">
                             <p>Debut de l'encan:</p>
-                            <p>JJ/MM/AAAA</p>
+                            <p>{{ enchere.debut }}</p>
                         </div>
                         <div class="carte__details">
                             <p>Fin de l'encan:</p>
-                            <p>JJ/MM/AAAA</p>
+                            <p>{{ enchere.fin }}</p>
                         </div>
                         <div class="carte__details">
                             <p>Mise de depart:</p>
-                            <p>100$</p>
+                            <p>{{ enchere.prix_plancher}}</p>
                         </div>
                         <div class="carte__btn"><a href="" class="carte__btn">Miser</a></div>
                     </div>
-
-                </div>
-                <div class="pages">
-                    <a href="#"><strong>1</strong></a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#"><img src="assets/img/right-arrow.png" style="width: 16px; height: 16px;" alt=""></a>
                 </div>
             </div>
             <aside class="banniere">
@@ -118,4 +106,3 @@
             </aside>
         </div>
     </main>
-    {{ include('layouts/footer.php')}}

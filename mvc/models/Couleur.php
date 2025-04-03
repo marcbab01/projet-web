@@ -4,5 +4,6 @@ use App\Models\CRUD;
 
 class Couleur extends CRUD{
     protected $table = "couleur";
-    protected $primaryKey = "id";  
+    protected $primaryKey = "id";
+    protected $fillable = ['nom'];
 }

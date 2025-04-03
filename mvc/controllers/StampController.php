@@ -15,6 +15,7 @@ class StampController
     {
         $stamp  = new Stamp;
         $select = $stamp->select('titre');
+
         if($select) {
             return View::render('stamp/index', ['timbre'=> $select]);
         }
@@ -36,13 +37,19 @@ class StampController
         if(isset($data['id']) && $data['id']!=null) {
             $stamp = new Stamp;
             $selectId = $stamp->selectId($data['id']);
+
             if($selectId) {
                 $couleur = new Couleur;
-                $selectCouleur = $couleur->select();
+                $selectCouleur = $couleur->selectId($selectId['couleur_id']);
+                $selectCouleur = $selectCouleur['nom'];
+
                 $pays = new Pays;
-                $selectPays = $pays->select();
+                $selectPays = $pays->selectId($selectId['pays_id']);
+                $selectPays = $selectPays['nom'];
+
                 $condition = new Condition;
-                $selectCond = $condition->select();
+                $selectCond = $condition->selectId($selectId['condition_id']);
+                $selectCond = $selectCond['nom'];
 
                 return View::render('stamp/show', ['timbre'=>$selectId, 'couleur'=> $selectCouleur, 'pays'=> $selectPays, 'conditions'=> $selectCond]);
             }
@@ -54,7 +61,7 @@ class StampController
     }
 
     public function store($data = []) {
-
+   
         $validator = new Validator;
         $couleur = new Couleur;
         $selectCouleur = $couleur->select();
@@ -88,8 +95,18 @@ class StampController
 
         if ($validator->isSuccess()) {
 
+           // Array ( [titre] => cvxvxcvdss [date] => 2000 [couleur_id] => [pays_id] => 4 [condition_id] => 2 [tirage] => 20 [longueur] => 20 [largeur] => 20 [certificat] => 1 )
+
             $stamp = new Stamp;
             $insert = $stamp->insert($data);
+            // die();
+            // $couleur = new Couleur;
+            // $selectCouleur = $couleur->selectId($data['couleur_id']);
+            // $data['couleur_id'] = $selectCouleur[0]['nom'];
+            // print_r($data);
+            // die();
+
+
 
             $directory = $_SERVER["DOCUMENT_ROOT"] . UPLOAD;
             $target_file = $directory . basename($_FILES[$name]["name"]);

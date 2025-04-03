@@ -1,7 +1,7 @@
 {{ include('layouts/header.php', {title: 'User Create'})}}
     <main>
         <h1>Stamps</h1>
-        <table>
+        <table class="">
             <tr>
                 <th>Titre</th>
                 <th>Date d'impression</th>
@@ -9,7 +9,8 @@
                 <th>Pays d'origine</th>
                 <th>Condition</th>
                 <th>Tirage</th>
-                <th>Dimensions</th>
+                <th>Longueur</th>
+                <th>Largeur</th>
                 <th>Coup de coeur du Lord</th>
             </tr>
             {% for timbre in timbre %}
