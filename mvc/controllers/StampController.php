@@ -5,6 +5,7 @@ use App\Models\Stamp;
 use App\Models\Couleur;
 use App\Models\Pays;
 use App\Models\Condition;
+use App\Models\Image;
 use App\Providers\Validator;
 use App\Providers\View;
 
@@ -62,6 +63,19 @@ class StampController
         $condition = new Condition;
         $selectCond = $condition->select();
 
+        if(($_FILES["mainImage"]["error"] > 0) || ($_FILES["mainImage"]["size"] > 0)) {
+            $validator->field('mainImage', $_FILES, "Image")->image("mainImg")->validImg("mainImg");
+        }
+        if(($_FILES["image1"]["error"] == 1) || ($_FILES["image1"]["size"] > 0)) {
+            $validator->field('image1', $_FILES, "Image")->validImg("image1");
+        }
+        if(($_FILES["image2"]["error"] == 1) || ($_FILES["image2"]["size"] > 0)) {
+            $validator->field('image2', $_FILES, "Image")->validImg("image2");
+        }
+        if(($_FILES["image3"]["error"] == 1) || ($_FILES["image3"]["size"] > 0)) {
+            $validator->field('image3', $_FILES, "Image")->validImg("image3");
+        }
+
         $validator->field('titre', $data['titre'])->min(2)->max(150);
 		$validator->field('date', $data['date'])->required();
         $validator->field('tirage', $data['tirage'])->number();
@@ -77,33 +91,29 @@ class StampController
             $stamp = new Stamp;
             $insert = $stamp->insert($data);
 
-            //sauvegarde des images
+            $directory = $_SERVER["DOCUMENT_ROOT"] . UPLOAD;
+            $target_file = $directory . basename($_FILES[$name]["name"]);
 
-            // foreach($_FILE as $nom => $file) {
-            //     if($file['error'] == 0) {
-            //         $file = $_SERVER["DOCUMENT_ROOT"] . UPLOAD . basename($fichier["name"]);
-            //         $move = move_uploaded_file($file["tmp_name"], $file);
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-            //         $dataImg['image'] = basename($fichier["name"]);
-			// 		$dataImg['id'] = $insert;
+            foreach ($_FILES as $nom => $file) {
+				if ($file['error'] == 0) {
+					$fileDir = $_SERVER["DOCUMENT_ROOT"] . UPLOAD . basename($file["name"]);
+					$move = move_uploaded_file($file["tmp_name"], $fileDir);
 
-            //         if ($nom == 'mainImage') {
-			// 			$dataImg['principalite'] = 1;
-			// 		} else {
-			// 			$dataImg['principalite'] = 0;
-			// 		}
+					$dataImg['chemin'] = basename($file["name"]);
+					$dataImg['id'] = $insert;
 
-            //         $image = new Image();
-            //         $insertImg = $image->insert($dataImg);
+					$image = new Image();
+					$addImg = $image->insert($dataImg);
+				}
+			}
 
-            //     }
+			return View::redirect('stamp/show?id=' . $insert);
+
+            // if ($insert) {
+            //     return View::redirect('image/create?id='.$insert);
             // }
-
-            // return View::redirect('stamp/show?id=' . $insert);
-
-            if ($insert) {
-                return View::redirect('image/create?id='.$insert);
-            }
 
         }
         else {

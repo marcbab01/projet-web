@@ -93,6 +93,42 @@ class Validator {
         return $this; 
     }
 
+    public function validImg($name) {
+        if ($_FILES["mainImage"]["error"] !=4) {
+            if ($this->value[$name]["error"] > 0) {
+                $this->errors[$this->key]="Il y a eu une erreur avec votre image";
+            }
+            return $this;
+
+            $directory = $_SERVER["DOCUMENT_ROOT"] . UPLOAD;
+            $target_file = $directory . basename($_FILES["$name"]["name"]);
+
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            $verif = getimagesize($_FILES[$name]["tmp_name"]);
+            if($verif == false) {
+                $this->errors[$this->key]="Le format de l'image est invalide";
+            }
+
+            if ($_FILES[$name]["size"] > 200000) {
+                $this->errors[$this->key]="L'image est trop lourde";
+            }
+
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif" ) {
+                $this->errors[$this->key]="Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            }
+
+            return $this;
+        }
+    }
+
+    public function image($name) {
+        if ($_FILES[$name]["error"] == 4) {
+            $this->errors[$this->key]="Une image est requise";
+        }
+        return $this;
+    }
+
     public function isSuccess(){
         if(empty($this->errors)) return true;
     }

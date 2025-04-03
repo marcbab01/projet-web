@@ -105,10 +105,19 @@
 
                 <label for="certificat">Coup de Coeur du Lord</label>
                 <input type="checkbox" id="certificat" name="certificat" value="1" {% if timbre.certificat %}checked{% endif %}>
-
+                
                 <label for="mainImage">Ajouter l'image principale</label>
                 <input type="file" name="mainImage" id="mainImage">
-                
+
+                <label for="image1">Ajouter une image supplémentaire</label>
+                <input type="file" name="image1" id="image1">
+
+                <label for="image2">Ajouter une image supplémentaire</label>
+                <input type="file" name="image2" id="image2">
+
+                <label for="image3">Ajouter une image supplémentaire</label>
+                <input type="file" name="image3" id="image3">
+
                 <input type="submit" class="btn" value="save">
             </form>
         </div>

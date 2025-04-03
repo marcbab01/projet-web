@@ -7,7 +7,7 @@ class Image extends CRUD
 {
     protected $table      = "image";
     protected $primaryKey = "id";
-    protected $fillable   = ['image', 'principalite', 'timbre_id'];
+    protected $fillable   = ['chemin', 'principalite', 'timbre_id'];
 
     final public function mainImage($value) {
         $sql = "SELECT * FROM $this->table WHERE `id` = ? AND `principalite` = 1;";
