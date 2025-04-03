@@ -37,7 +37,7 @@ CREATE TABLE conditions (
 CREATE TABLE timbre (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titre VARCHAR(255) NOT NULL,
-    date DATE,
+    date INT,
     couleur_id INT NOT NULL,
     pays_id INT NOT NULL,
     condition_id INT NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE timbre (
 
 CREATE TABLE image (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    image VARCHAR(255),
+    chemin VARCHAR(255),
     principalite BOOLEAN,
     timbre_id INT,
     FOREIGN KEY (timbre_id) REFERENCES timbre(id)
