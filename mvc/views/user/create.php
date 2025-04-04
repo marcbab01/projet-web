@@ -4,11 +4,21 @@
             <h2>Create an Account</h2>
             <form class="connection__form" method="post">
 
+                {% if errors.nom is defined %}
+                    <span>
+                        {{errors.nom}}
+                    </span>
+                {% endif %}
                 <label for="nom">
                     Nom Complet
                 </label>
                 <input type="text" id="nom" name="nom" value="{{user.nom}}">
 
+                {% if errors.username is defined %}
+                    <span>
+                        {{errors.username}}
+                    </span>
+                {% endif %}
                 <label for="username">
                     Nom d'utilisateur
                 </label>

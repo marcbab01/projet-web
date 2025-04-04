@@ -63,7 +63,6 @@ CREATE TABLE enchere (
     debut DATE NOT NULL,
     fin DATE NOT NULL,
     prix_plancher DOUBLE NOT NULL,
-    favoris BOOLEAN NOT NULL,
     timbre_id INT NOT NULL,
     FOREIGN KEY (timbre_id) REFERENCES timbre(id)
 );

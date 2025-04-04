@@ -99,14 +99,6 @@ class StampController
 
             $stamp = new Stamp;
             $insert = $stamp->insert($data);
-            // die();
-            // $couleur = new Couleur;
-            // $selectCouleur = $couleur->selectId($data['couleur_id']);
-            // $data['couleur_id'] = $selectCouleur[0]['nom'];
-            // print_r($data);
-            // die();
-
-
 
             $directory = $_SERVER["DOCUMENT_ROOT"] . UPLOAD;
             $target_file = $directory . basename($_FILES[$name]["name"]);
@@ -136,6 +128,83 @@ class StampController
         else {
             $errors = $validator->getErrors();
             return View::render('stamp/create', ['errors' => $errors, 'timbre' => $data, 'couleur' => $selectCouleur, 'conditions' => $selectCond, 'pays' => $selectPays]);
+        }
+    }
+
+    public function edit($data=[]){
+        if(isset($data['id'])&& $data['id']!=null){
+            $stamp = new Stamp;
+            if($selectId = $stamp->selectId($data['id'])){
+                return View::render('stamp/edit', ['timbre'=>$selectId]);
+            }else{
+                return View::render('error', ['msg'=>'Ce timbre n existe pas']);
+            }
+            
+        }
+        return View::render('error');
+    }
+
+    public function update($data=[], $get=[]){
+        $validator = new Validator;
+        $couleur = new Couleur;
+        $selectCouleur = $couleur->select();
+        $pays = new Pays;
+        $selectPays = $pays->select();
+        $condition = new Condition;
+        $selectCond = $condition->select();
+
+        if(($_FILES["mainImage"]["error"] > 0) || ($_FILES["mainImage"]["size"] > 0)) {
+            $validator->field('mainImage', $_FILES, "Image")->image("mainImg")->validImg("mainImg");
+        }
+        if(($_FILES["image1"]["error"] == 1) || ($_FILES["image1"]["size"] > 0)) {
+            $validator->field('image1', $_FILES, "Image")->validImg("image1");
+        }
+        if(($_FILES["image2"]["error"] == 1) || ($_FILES["image2"]["size"] > 0)) {
+            $validator->field('image2', $_FILES, "Image")->validImg("image2");
+        }
+        if(($_FILES["image3"]["error"] == 1) || ($_FILES["image3"]["size"] > 0)) {
+            $validator->field('image3', $_FILES, "Image")->validImg("image3");
+        }
+
+        $validator->field('titre', $data['titre'])->min(2)->max(150);
+		$validator->field('date', $data['date'])->required();
+        $validator->field('tirage', $data['tirage'])->number();
+		$validator->field('longueur', $data['longueur'])->required()->number();
+		$validator->field('largeur', $data['largeur'])->required()->number();
+		$validator->field('pays_id', $data['pays_id'], 'pays')->required();
+		$validator->field('condition_id', $data['condition_id'], 'conditions')->required();
+        $validator->field('couleur_id', $data['couleur_id'], 'couleur')->required();
+
+        if ($validator->isSuccess()) {
+ 
+            $stamp = new Stamp;
+            $update = $stamp->update($data, $get['id']); 
+
+            $directory = $_SERVER["DOCUMENT_ROOT"] . UPLOAD;
+            $target_file = $directory . basename($_FILES[$name]["name"]);
+
+            if($update) {
+                return View::redirect('stamp/show?id=' . $get['id']);
+            }
+            else {
+                return View::render('error');
+            }
+        }
+        else {
+            $errors = $validator->getErrors();
+            return View::render('stamp/edit', ['errors' => $errors, 'timbre' => $data, 'couleur' => $selectCouleur, 'conditions' => $selectCond, 'pays' => $selectPays]);
+        }
+
+    }
+
+    public function delete($data=[]){
+        $id = $data['id'];
+        $stamp = new Stamp;
+        $delete = $stamp->delete($id);
+        if($delete){
+            return View::redirect('stamp');
+        }else{
+            return View::render('error');
         }
     }
 }
