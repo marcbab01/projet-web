@@ -24,22 +24,46 @@
                 </label>
                 <input type="text" id="username" name="username" value="{{user.username}}">
 
+                {% if errors.password is defined %}
+                    <span>
+                        {{errors.password}}
+                    </span>
+                {% endif %}
                 <label for="password">
                     Mot de passe
                 </label>
                 <input type="password" id="password" name="password" value="{{user.password}}">
+
+                {% if errors.email is defined %}
+                    <span>
+                        {{errors.email}}
+                    </span>
+                {% endif %}
                 <label for="email">
                     Adresse courriel
                 </label>
                 <input type="email" id="email" name="email" value="{{user.email}}">
+
+                {% if errors.phone is defined %}
+                    <span>
+                        {{errors.phone}}
+                    </span>
+                {% endif %}
                 <label for="phone">
                     No de telephone
                 </label>
                 <input type="text" id="phone" name="phone" value="{{user.phone}}">
+
+                {% if errors.zipCode is defined %}
+                    <span>
+                        {{errors.zipCode}}
+                    </span>
+                {% endif %}
                 <label for="zipCode">
                     Code Postal
                 </label>
                 <input type="text" id="zipCode" name="zipCode" value="{{user.zipCode}}">
+
                 <label for="privilege_id">
                     Privilege
                 </label>

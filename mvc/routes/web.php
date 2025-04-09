@@ -24,5 +24,6 @@ Route::post('/image/create', 'ImageController@store');
 
 Route::get('/auction', 'AuctionController@index');
 Route::get('/auction/show', 'AuctionController@show');
+Route::get('/auction/show', 'BidController@placeBid');
 
 Route::dispatch();

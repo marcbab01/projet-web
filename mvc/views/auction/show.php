@@ -60,9 +60,11 @@
                             <h4>Temps restant de l'encan</h4>
                             <p><strong>00:00:00</strong></p>
                         </span>
-                        <button class="enchere__btn">Placer une Mise</button>
+                        <input type="text" id="montant" name="montant" value="{{mise.montant}}">
+                        <input type="submit" class="enchere__btn" value="Miser">
                     </div>
                 </div>
             </div>
         </section>
 </main>
+{{ include('layouts/footer.php')}}
