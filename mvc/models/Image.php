@@ -31,8 +31,8 @@ class Image extends CRUD
 
         $rows = $stmt->rowCount();
 
-        if ($rows == 1) {
-            return $stmt->fetch();
+        if ($rows > 0) {
+            return $stmt->fetchAll();
         }
         else {
             return false;

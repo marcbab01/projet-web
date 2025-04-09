@@ -79,8 +79,8 @@
                         <div class="carte">
 
                             <div class="carte__img"><img src="assets/img/timbre-template1.jpg" alt=""></div>
-
-                            <h2>{{timbre.titre}}</h2>
+                        
+                            <h2>{{timbreTitle}}</h2>
 
                             <p><i>{{conditions}}</i></p>
 

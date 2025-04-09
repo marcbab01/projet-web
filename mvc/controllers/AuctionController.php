@@ -17,12 +17,17 @@ class AuctionController {
     public function index()
     {
         $auction = new Auction;
-        $select = $auction->select('timbre_id');
+        $selectAuction = $auction->select('id');
 
-        if($select) {
-            // var_dump($select);
+        if($selectAuction) {
+
+            $stamp = new Stamp;
+            $selectStamp = $stamp->select('titre');
+
+            // var_dump($selectStamp);
             // die();
-            return View::render('auction/index', ['enchere'=> $select]);
+
+            return View::render('auction/index', ['enchere'=> $selectAuction, 'stampTitle' => $selectStamp]);
         }
         return View::render('error');
     }
@@ -53,12 +58,19 @@ class AuctionController {
                     $condition = new Condition;
                     $selectCond = $condition->selectId($conditionId);
                     $selectCond = $selectCond['nom'];
+                    var_dump($selectCond);
+                    die();
 
                     $image = new Image;
                     $images = $image->selectbyStampId($selectStamp['id']);
-                    // $images = $image['chemin'];
+                    // var_dump($images);
+                    // die();
 
-                    return View::render('auction/show', ['enchere' =>$selectAuction,'timbre'=>$selectStamp, 'couleur'=> $selectCouleur, 'pays'=> $selectPays, 'conditions'=> $selectCond, 'image' =>$images]);
+                    $mainImage = $images[0];
+                    // var_dump($mainImage);
+                    // die();
+
+                    return View::render('auction/show', ['enchere' =>$selectAuction,'timbre'=>$selectStamp, 'couleur'=> $selectCouleur, 'pays'=> $selectPays, 'conditions'=> $selectCond, 'images' =>$images, 'mainImage' => $mainImage]);
                 }
                 return View::render('errors/404');
             }

@@ -8,21 +8,18 @@
                 </div>
                 <div class="enchere__contenu-general">
                     <div class="enchere__gallerie">
-                        {% if images is not empty %}
-                            <!-- <picture class="enchere__image-principale">
-                                <img src="{{asset}}/img/{{ images[0].chemin }}" alt="Image principale du timbre">
+
+                            <picture class="enchere__image-principale">
+                                <img src="{{base}}/uploads/{{ mainImage.chemin }}" alt="Image principale du timbre">
                             </picture>
                             <div class="enchere__carousel">
                                 {% for image in images %}
                                     <picture class="carousel__image">
-                                        <img src="{{ image.chemin }}" alt="Image timbre {{ loop.index }}">
+                                        <img src="{{base}}/uploads/{{ image.chemin }}" alt="Image timbre {{ loop.index }}">
                                     </picture>
                                 {% endfor %}
-                            </div> -->
-                            <img src="{{asset}}/img/{{image.chemin}}" alt="">
-                        {% else %}
-                            <p>Aucune image disponible.</p>
-                        {% endif %}
+                            </div>
+
                     </div>
                     <div class="enchere__produit">
                         <div class="timbre__infos _general">
