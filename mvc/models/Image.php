@@ -23,4 +23,19 @@ class Image extends CRUD
             return false;
         }
     }
+
+    public function selectbyStampId($stampId) {
+        $sql = "SELECT * FROM $this->table WHERE `timbre_id` = ?;";
+        $stmt = $this->prepare($sql);
+        $stmt->execute(array($stampId));
+
+        $rows = $stmt->rowCount();
+
+        if ($rows == 1) {
+            return $stmt->fetch();
+        }
+        else {
+            return false;
+        }
+    }
 }

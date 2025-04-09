@@ -22,7 +22,7 @@ Route::post('/stamp/create', 'StampController@store');
 Route::get('/image/create', 'ImageController@create');
 Route::post('/image/create', 'ImageController@store');
 
-Route::get('/auction/create', 'AuctionController@create');
-Route::post('/auction/create', 'AuctionController@store');
+Route::get('/auction', 'AuctionController@index');
+Route::get('/auction/show', 'AuctionController@show');
 
 Route::dispatch();

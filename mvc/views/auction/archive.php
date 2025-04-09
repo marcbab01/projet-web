@@ -74,26 +74,39 @@
             </aside>
             <div class="grille">
                 <div class="grille__contenu">
-                    <div class="carte">
-                        <div class="carte__img"><img src="assets/img/timbre-template1.jpg" alt=""></div>
-                        <h2>{{timbre.titre}}</h2>
-                        <p><i>{{timbre.condition_id}}</i></p>
-                        <p>{{timbre.pays_id}}</p>
-                        <p>{{timbre.date}}</p>
-                        <div class="carte__details">
-                            <p>Debut de l'encan:</p>
-                            <p>{{ enchere.debut }}</p>
+
+                    {% for enchere in encheres %}
+                        <div class="carte">
+
+                            <div class="carte__img"><img src="assets/img/timbre-template1.jpg" alt=""></div>
+
+                            <h2>{{timbre.titre}}</h2>
+
+                            <p><i>{{timbre.condition_id}}</i></p>
+
+                            <p>{{timbre.pays_id}}</p>
+
+                            <p>{{timbre.date}}</p>
+
+                            <div class="carte__details">
+                                <p>Debut de l'encan:</p>
+                                <p>{{ enchere.debut }}</p>
+                            </div>
+
+                            <div class="carte__details">
+                                <p>Fin de l'encan:</p>
+                                <p>{{ enchere.fin }}</p>
+                            </div>
+
+                            <div class="carte__details">
+                                <p>Mise de depart:</p>
+                                <p>{{ enchere.prix_plancher}}</p>
+                            </div>
+
+                            <div class="carte__btn"><a href="" class="carte__btn">Miser</a></div>
                         </div>
-                        <div class="carte__details">
-                            <p>Fin de l'encan:</p>
-                            <p>{{ enchere.fin }}</p>
-                        </div>
-                        <div class="carte__details">
-                            <p>Mise de depart:</p>
-                            <p>{{ enchere.prix_plancher}}</p>
-                        </div>
-                        <div class="carte__btn"><a href="" class="carte__btn">Miser</a></div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
             <aside class="banniere">

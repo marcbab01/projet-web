@@ -14,18 +14,56 @@ use App\Models\Condition;
 use App\Models\Couleur;
 
 class AuctionController {
-    public function create() {
-        $stamp = new Stamp;
-        $select = $stamp->select($data);
+    public function index()
+    {
+        $auction = new Auction;
+        $select = $auction->select('timbre_id');
 
-        return View::render('auction/create', ['timbre' => $select]);
+        if($select) {
+            // var_dump($select);
+            // die();
+            return View::render('auction/index', ['enchere'=> $select]);
+        }
+        return View::render('error');
     }
 
-    public function store($data = []) {
-        $validator = new Validator;
+    public function show($data = []) {
+        if(isset($data['id']) && $data['id']!=null) {
+            $auction = new Auction;
+            $selectAuction = $auction->selectId($data['id']);
 
-        $stamp = new Stamp;
-        $select = $stamp->select();
-        
+            if($selectAuction){
+                $stamp = new Stamp;
+                $selectStamp = $stamp->selectId($selectAuction['timbre_id']);
+
+                if($selectStamp) {
+
+                    $couleurId = $selectStamp['couleur_id'];
+                    $paysId = $selectStamp['pays_id'];
+                    $conditionId = $selectStamp['condition_id'];
+
+                    $couleur = new Couleur;
+                    $selectCouleur = $couleur->selectId($couleurId);
+                    $selectCouleur = $selectCouleur['nom'];
+    
+                    $pays = new Pays;
+                    $selectPays = $pays->selectId($paysId);
+                    $selectPays = $selectPays['nom'];
+    
+                    $condition = new Condition;
+                    $selectCond = $condition->selectId($conditionId);
+                    $selectCond = $selectCond['nom'];
+
+                    $image = new Image;
+                    $images = $image->selectbyStampId($selectStamp['id']);
+                    // $images = $image['chemin'];
+
+                    return View::render('auction/show', ['enchere' =>$selectAuction,'timbre'=>$selectStamp, 'couleur'=> $selectCouleur, 'pays'=> $selectPays, 'conditions'=> $selectCond, 'image' =>$images]);
+                }
+                return View::render('errors/404');
+            }
+            return View::render('errors/404');
+        }
+        return View::render('errors/404');
     }
 }

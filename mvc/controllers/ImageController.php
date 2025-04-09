@@ -6,11 +6,10 @@ use App\Providers\Validator;
 use App\Providers\View;
 
 class ImageController {
-    public function create() {
+    public function showImage($stampId) {
+        $image = new Image();
+        $images = $image->selectbyStampId($stampId);
 
-    }
-
-    public function store() {
-        
+        return $images;
     }
 }

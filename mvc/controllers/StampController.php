@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\Stamp;
@@ -111,7 +112,7 @@ class StampController
 					$move = move_uploaded_file($file["tmp_name"], $fileDir);
 
 					$dataImg['chemin'] = basename($file["name"]);
-					$dataImg['id'] = $insert;
+					$dataImg['timbre_id'] = $insert;
 
 					$image = new Image();
 					$addImg = $image->insert($dataImg);

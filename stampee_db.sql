@@ -81,7 +81,7 @@ CREATE TABLE mise (
     montant DOUBLE NOT NULL,
     timestamp DATETIME,
     user_id INT NOT NULL,
-    enchere_id INT NOT NULL UNIQUE,
+    enchere_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (enchere_id) REFERENCES enchere(id)
 );
@@ -118,3 +118,12 @@ INSERT INTO conditions (nom) VALUES ('Excellente');
 INSERT INTO conditions (nom) VALUES ('Bonne');
 INSERT INTO conditions (nom) VALUES ('Moyenne');
 INSERT INTO conditions (nom) VALUES ('Endommage');
+
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-05-10', '2025-05-24', 800.00, 1);
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-06-01', '2025-06-15', 300.00, 2);
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-06-02', '2025-06-16', 100.00, 3);
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-06-10', '2025-06-24', 50.00, 4);
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-07-01', '2025-08-01', 500.00, 5);
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-08-06', '2025-08-20', 275.00, 6);
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-09-01', '2025-09-15', 650.00, 7);
+INSERT INTO enchere (debut, fin, prix_plancher, timbre_id) VALUES ('2025-10-15', '2025-10-29', 425.00, 8);
