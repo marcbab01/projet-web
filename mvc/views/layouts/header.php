@@ -54,7 +54,7 @@
     </nav>
     <header class="entete">
         <div class="entete__contenu">
-            <a href="index.html" class="logo"><h1>Stampee Auction</h1></a>
+            <a href="{{base}}/home" class="logo"><h1>Stampee Auction</h1></a>
             <form class="searchBar">
             <input type="search" class="searchBar__input">
                 <button type="submit" class="searchBar__btn"><img src="{{asset}}img/search-icon.png"
@@ -84,7 +84,7 @@
                 <a href="#">Archives</a>
                 <ul class="menu-deroulant">
                     <li class="menu-deroulant__li"><a href="">Timbres</a></li>
-                    <li class="menu-deroulant__li"><a href="">Encheres</a></li>
+                    <li class="menu-deroulant__li"><a href="{{base}}/auction">Encheres</a></li>
                 </ul>
             </li>
         </ul>

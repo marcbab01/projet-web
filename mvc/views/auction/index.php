@@ -78,13 +78,13 @@
                     {% for enchere in enchere %}
                         <div class="carte">
 
-                            <div class="carte__img"><img src="assets/img/timbre-template1.jpg" alt=""></div>
-                        
-                            <h2>{{timbreTitle}}</h2>
+                            <div class="carte__img" style="display:flex; justify-content:center; align-item:center;"><img src="{{base}}/uploads/{{ enchere.timbre.image.chemin }}" alt="" style="width:200px;"></div>
 
-                            <p><i>{{conditions}}</i></p>
+                            <h2>{{enchere.timbre.titre}}</h2>
 
-                            <p>{{timbre.pays_id}}</p>
+                            <p><i>{{enchere.timbre.condition}}</i></p>
+
+                            <p>{{enchere.timbre.pays}}</p>
 
                             <p>{{timbre.date}}</p>
 

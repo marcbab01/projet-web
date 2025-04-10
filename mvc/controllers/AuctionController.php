@@ -12,23 +12,53 @@ use App\Models\Image;
 use App\Models\Pays;
 use App\Models\Condition;
 use App\Models\Couleur;
+use App\Models\Bid;
+use App\Models\User;
 
 class AuctionController {
     public function index()
     {
         $auction = new Auction;
-        $selectAuction = $auction->select('id');
+        $selectAuction = $auction->select();
 
-        if($selectAuction) {
 
+
+        foreach($selectAuction as $selectAuctionIndex=>$auction) {
             $stamp = new Stamp;
-            $selectStamp = $stamp->select('titre');
+            $selectStamps = $stamp->selectId($auction['timbre_id']);
+            $selectAuction[$selectAuctionIndex]['timbre'] = $selectStamps;
 
-            // var_dump($selectStamp);
-            // die();
+            $couleurId = $selectStamps['couleur_id'];
+            $paysId = $selectStamps['pays_id'];
+            $conditionId = $selectStamps['condition_id'];
 
-            return View::render('auction/index', ['enchere'=> $selectAuction, 'stampTitle' => $selectStamp]);
+            $couleur = new Couleur;
+            $selectCouleur = $couleur->selectId($couleurId);
+            $selectCouleur = $selectCouleur['nom'];
+
+            $pays = new Pays;
+            $selectPays = $pays->selectId($paysId);
+            $selectPays = $selectPays['nom'];
+            $selectAuction[$selectAuctionIndex]['timbre']['pays'] = $selectPays;
+
+            $condition = new Condition;
+            $selectCond = $condition->selectId($conditionId);
+            $selectCond = $selectCond['nom'];
+            $selectAuction[$selectAuctionIndex]['timbre']['condition'] = $selectCond;
+
+            $image = new Image;
+            $images = $image->selectbyStampId($selectStamps['id']);
+            $mainImage = $images[0];
+            $selectAuction[$selectAuctionIndex]['timbre']['image'] = $mainImage;
+
+
         }
+        // echo('<pre>');
+        // print_r($selectAuction);
+        // echo('</pre>');
+        // die();
+
+        return View::render('auction/index', ['enchere'=> $selectAuction]);
         return View::render('error');
     }
 
@@ -58,19 +88,25 @@ class AuctionController {
                     $condition = new Condition;
                     $selectCond = $condition->selectId($conditionId);
                     $selectCond = $selectCond['nom'];
-                    var_dump($selectCond);
-                    die();
+                    // var_dump($selectCond);
+                    // die();
 
                     $image = new Image;
                     $images = $image->selectbyStampId($selectStamp['id']);
-                    // var_dump($images);
-                    // die();
 
                     $mainImage = $images[0];
-                    // var_dump($mainImage);
-                    // die();
 
-                    return View::render('auction/show', ['enchere' =>$selectAuction,'timbre'=>$selectStamp, 'couleur'=> $selectCouleur, 'pays'=> $selectPays, 'conditions'=> $selectCond, 'images' =>$images, 'mainImage' => $mainImage]);
+                    $mise = new Bid;
+                    $mises = $mise->selectByAuctionId($selectAuction['id']);
+
+                    foreach($mises as $selectMiseIndex=>$mise) {
+                        $user = new User;
+                        $users = $user->selectId($mise['user_id']);
+                        $mises[$selectMiseIndex]['user'] = $users['username'];
+                    }
+
+
+                    return View::render('auction/show', ['enchere' =>$selectAuction,'timbre'=>$selectStamp, 'couleur'=> $selectCouleur, 'pays'=> $selectPays, 'conditions'=> $selectCond, 'images' =>$images, 'mainImage' => $mainImage, 'mises' => $mises]);
                 }
                 return View::render('errors/404');
             }

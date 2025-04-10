@@ -1,0 +1,5 @@
+.liste__contenu {
+    display: flex;
+    flex-direction: column-reverse;
+
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\HomeController;
 use App\Controllers\UserController;
 use App\Controllers\StampController;
 use App\Routes\Route;
@@ -24,6 +25,6 @@ Route::post('/image/create', 'ImageController@store');
 
 Route::get('/auction', 'AuctionController@index');
 Route::get('/auction/show', 'AuctionController@show');
-Route::get('/auction/show', 'BidController@placeBid');
+Route::post('/auction/show', 'BidController@placeBid');
 
 Route::dispatch();

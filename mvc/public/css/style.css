@@ -1,6 +1,7 @@
 @import 'font.css';
 @import 'general.css';
 @import 'index.css';
+@import 'img.css';
 
 @import 'composants/carte.css';
 @import 'composants/filtre.css';
@@ -15,4 +16,5 @@
 @import 'layout/filtres.css';
 @import 'layouts/footer.css';
 @import 'layouts/grille.css';
+@import 'layouts/liste.css';
 @import 'layouts/navigation.css';

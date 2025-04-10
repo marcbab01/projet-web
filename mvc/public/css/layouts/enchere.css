@@ -30,7 +30,6 @@
 
 .enchere__carousel {
     display: flex;
-    gap: 50px;
     margin: 20px;
 }
 
@@ -61,4 +60,8 @@
     color: #f5f2e9;
     background-color: #4f6e8f;
 
+}
+
+.enchere__image-principale>img {
+    width: 200px;
 }

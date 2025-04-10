@@ -1,9 +1,12 @@
 <?php
+namespace App\Controllers;
+
+use App\Providers\View;
+
 class HomeController
 {
     public function index()
     {
-        $data = "Hello from ExampleModel!";
-        include 'views/home.php';
+        View::render('home');
     }
 }
