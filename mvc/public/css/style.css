@@ -3,6 +3,7 @@
 @import 'index.css';
 @import 'img.css';
 
+@import 'composants/carousel.css';
 @import 'composants/carte.css';
 @import 'composants/filtre.css';
 @import 'composants/menu-deroulant.css';
